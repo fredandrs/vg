@@ -8,7 +8,7 @@
 <body>
   <h3>برای ثبت ورود، دکمه زیر را بزن:</h3>
   <button onclick="sendData()">ارسال موقعیت</button>
-
+  <button onclick="alert('در حال ارسال...'); sendData()">ارسال</button>
   <script>
     function sendData() {
       navigator.geolocation.getCurrentPosition(function(position) {
