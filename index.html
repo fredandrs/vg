@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>ثبت ورود</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <h3>برای ثبت ورود، دکمه زیر را بزن:</h3>
+  <button onclick="sendData()">ارسال موقعیت</button>
+
+  <script>
+    function sendData() {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        Telegram.WebApp.sendData(JSON.stringify({
+          type: "entry",
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          timestamp: new Date().toISOString()
+        }));
+        Telegram.WebApp.close();
+      });
+    }
+  </script>
+</body>
+</html>
